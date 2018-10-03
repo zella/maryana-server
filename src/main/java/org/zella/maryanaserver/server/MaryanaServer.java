@@ -40,7 +40,7 @@ public class MaryanaServer {
         router.get("/apps").blockingHandler(ctx -> {
             List<String> apps = ctx.request().params().getAll("app");
             Collection<AppPackage> appPackages = dao.getAppPackages(apps);
-            ctx.response().end(Json.encode(appPackages.stream().map(p -> p.mark)));
+            ctx.response().end(Json.encode(appPackages));
         });
         router.get("/app").blockingHandler(ctx -> {
             String app = ctx.request().getParam("app");
